@@ -28,7 +28,7 @@ class CardAdapter(private val empList: ArrayList<CardModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentEmp = empList[position]
-        holder.tvCardName.text = currentEmp.cardName
+        holder.tvProductName.text = currentEmp.productName
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +37,7 @@ class CardAdapter(private val empList: ArrayList<CardModel>) :
 
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
-        val tvCardName : TextView = itemView.findViewById(R.id.tvCardName)
+        val tvProductName : TextView = itemView.findViewById(R.id.tvProductName)
 
         init {
             itemView.setOnClickListener {

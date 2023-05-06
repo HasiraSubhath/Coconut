@@ -6,38 +6,38 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/etCardName"
+        android:id="@+id/etProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Card Name"
+        android:hint="Product Name"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etCardNumber"
+        android:id="@+id/etProductQty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Card Number"
+        android:hint="Product Qty"
         android:maxLength="16"/>
 
     <EditText
-        android:id="@+id/etCardDate"
+        android:id="@+id/etProductDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Exp Date"
+        android:hint="Date"
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/etCardCvv"
+        android:id="@+id/etProductPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="CVV"
+        android:hint="Price"
         android:maxLength="3"
         android:inputType="textPersonName" />
 

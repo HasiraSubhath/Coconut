@@ -13,10 +13,10 @@ import com.google.firebase.database.FirebaseDatabase
 class CardInsertionActivity : AppCompatActivity() {
     //initializing variables
 
-    private lateinit var etCardName: EditText
-    private lateinit var etCardNumber: EditText
-    private lateinit var etCardDate: EditText
-    private lateinit var etCardCvv: EditText
+    private lateinit var etProductName: EditText
+    private lateinit var etProductQty: EditText
+    private lateinit var etProductDate: EditText
+    private lateinit var etProductPrice: EditText
     private lateinit var btnSaveData: Button
 
     private lateinit var dbRef: DatabaseReference
@@ -26,13 +26,13 @@ class CardInsertionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_insertion)
 
-        etCardName = findViewById(R.id.etCardName)
-        etCardNumber = findViewById(R.id.etCardNumber)
-        etCardDate = findViewById(R.id.etCardDate)
-        etCardCvv = findViewById(R.id.etCardCvv)
+        etProductName = findViewById(R.id.etProductName)
+        etProductQty = findViewById(R.id.etProductQty)
+        etProductDate = findViewById(R.id.etProductDate)
+        etProductPrice = findViewById(R.id.etProductPrice)
         btnSaveData = findViewById(R.id.btnSave)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("CoconutDB")
 
         btnSaveData.setOnClickListener {
             saveCardData()
@@ -43,42 +43,42 @@ class CardInsertionActivity : AppCompatActivity() {
     private fun saveCardData() {
 
         //Geting Values
-        val cardName = etCardName.text.toString()
-        val cardNumber = etCardNumber.text.toString()
-        val cardDate = etCardDate.text.toString()
-        val cardCvv = etCardCvv.text.toString()
+        val productName = etProductName.text.toString()
+        val productQty = etProductQty.text.toString()
+        val productDate = etProductDate.text.toString()
+        val productPrice = etProductPrice.text.toString()
 
         //validation
-        if(cardName.isEmpty() || cardNumber.isEmpty() || cardDate.isEmpty() || cardCvv.isEmpty()){
-        if (cardName.isEmpty()) {
-            etCardName.error = "Please enter card Name"
+        if(productName.isEmpty() || productQty.isEmpty() || productDate.isEmpty() || productPrice.isEmpty()){
+        if (productName.isEmpty()) {
+            etProductName.error = "Please enter card Name"
         }
-        if (cardNumber.isEmpty()) {
-            etCardNumber.error = "Please enter card Number"
+        if (productQty.isEmpty()) {
+            etProductQty.error = "Please enter card Number"
         }
-        if (cardDate.isEmpty()) {
-            etCardDate.error = "Please enter card Date"
+        if (productDate.isEmpty()) {
+            etProductDate.error = "Please enter card Date"
         }
-        if (cardCvv.isEmpty()) {
-            etCardDate.error = "Please enter cvv"
+        if (productPrice.isEmpty()) {
+            etProductDate.error = "Please enter cvv"
         }
             Toast.makeText(this, "Some areas are not filled", Toast.LENGTH_LONG).show()
         }
         else{
         //genrate unique ID
-        val cardId = dbRef.push().key!!
+        val productId = dbRef.push().key!!
 
-        val card = CardModel(cardId, cardName, cardNumber, cardDate, cardCvv)
+        val card = CardModel(productId, productName, productQty, productDate, productPrice)
 
-        dbRef.child(cardId).setValue(card)
+        dbRef.child(productId).setValue(card)
             .addOnCompleteListener {
                 Toast.makeText(this,"data insert successfully",Toast.LENGTH_SHORT).show()
 
                 //clear data after insert
-                etCardName.text.clear()
-                etCardNumber.text.clear()
-                etCardDate.text.clear()
-                etCardCvv.text.clear()
+                etProductName.text.clear()
+                etProductQty.text.clear()
+                etProductDate.text.clear()
+                etProductPrice.text.clear()
 
             }.addOnFailureListener { err ->
                 Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_SHORT).show()
