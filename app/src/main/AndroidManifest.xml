@@ -12,13 +12,13 @@
         android:theme="@style/Theme.Kotlin_bill"
         tools:targetApi="31">
         <activity
-            android:name=".activities.CardDetailsActivity"
+            android:name=".activities.OrderDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.CardFetchingActivity"
+            android:name=".activities.OrderFetchingActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.CardInsertionActivity"
+            android:name=".activities.OrderInsertionActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
