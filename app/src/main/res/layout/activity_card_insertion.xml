@@ -11,12 +11,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
-        android:src="@drawable/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_width="717dp"
+        android:layout_height="279dp"
+        android:layout_marginBottom="167dp"
+        app:layout_constraintBottom_toTopOf="@+id/etProductName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/coco2" />
 
     <TextView
         android:id="@+id/textView2"
@@ -24,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
         android:gravity="center"
-        android:text="Card Details"
+        android:text="Order Details"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -34,14 +35,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etCardName"
+        android:id="@+id/etProductName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="192dp"
         android:backgroundTint="@color/black"
         android:ems="10"
 
-        android:hint="Card Name"
+        android:hint="Product Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -49,57 +50,62 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/etCardNumber"
+        android:id="@+id/etProductQty"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/black"
         android:ems="10"
-        android:hint="Card Number"
+        android:hint="Product Qty"
         android:maxLength="16"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCardName" />
+        app:layout_constraintTop_toBottomOf="@+id/etProductName" />
 
     <EditText
-        android:id="@+id/etCardDate"
+        android:id="@+id/etProductDate"
         android:layout_width="182dp"
         android:layout_height="41dp"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Exp Date"
+        android:hint="Date"
         android:backgroundTint="@color/black"
         android:inputType="date"
+        android:maxLength="5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCardNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/etProductQty" />
 
     <EditText
-        android:id="@+id/etCardCvv"
-        android:layout_width="103dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="48dp"
+        android:id="@+id/etProductPrice"
+        android:layout_width="173dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="245dp"
         android:backgroundTint="@color/black"
+
         android:ems="10"
-        android:hint="CVV"
-        android:maxLength="3"
+        android:hint="Price"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etCardDate"
-        app:layout_constraintTop_toBottomOf="@+id/etCardNumber" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etProductDate" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="93dp"
         android:layout_marginBottom="52dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/darkyello2"
         android:text="Add"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etProductDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

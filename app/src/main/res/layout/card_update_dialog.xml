@@ -6,48 +6,50 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/etCardName"
+        android:id="@+id/etProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Card Name"
+        android:hint="Product Name"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etCardNumber"
+        android:id="@+id/etProductQty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Card Number"
+        android:hint="Product Qty"
         android:maxLength="16"/>
 
     <EditText
-        android:id="@+id/etCardDate"
+        android:id="@+id/etProductDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Exp Date"
+        android:hint="Date"
+        android:maxLength="05"
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/etCardCvv"
+        android:id="@+id/etProductPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="CVV"
-        android:maxLength="3"
+        android:hint="Price"
+
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btnUpdateData"
+        android:backgroundTint="@color/darkyello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Update Data" />
+        android:text="Update Order" />
 
 
 </LinearLayout>

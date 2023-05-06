@@ -41,7 +41,7 @@ class CardFetchingActivity : AppCompatActivity() {
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB")
+        dbRef = FirebaseDatabase.getInstance().getReference("CoconutDB")
 
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -60,11 +60,11 @@ class CardFetchingActivity : AppCompatActivity() {
                             val intent = Intent(this@CardFetchingActivity, CardDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
-                            intent.putExtra("cardId", empList[position].cardId)
-                            intent.putExtra("cardName", empList[position].cardName)
-                            intent.putExtra("cardNumber", empList[position].cardNumber)
-                            intent.putExtra("cardDate", empList[position].cardDate)
-                            intent.putExtra("cardCvv", empList[position].cardCvv)
+                            intent.putExtra("productId", empList[position].productId)
+                            intent.putExtra("productName", empList[position].productName)
+                            intent.putExtra("productQty", empList[position].productQty)
+                            intent.putExtra("productDate", empList[position].productDate)
+                            intent.putExtra("productPrice", empList[position].productPrice)
                             startActivity(intent)
                         }
 

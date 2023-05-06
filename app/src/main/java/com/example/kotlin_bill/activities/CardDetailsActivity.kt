@@ -14,11 +14,11 @@ import com.google.firebase.database.FirebaseDatabase
 
 class CardDetailsActivity : AppCompatActivity() {
 
-    private lateinit var tvCardId: TextView
-    private lateinit var tvCardName: TextView
-    private lateinit var tvCardNumber: TextView
-    private lateinit var tvCardDate: TextView
-    private lateinit var tvCardCvv: TextView
+    private lateinit var tvProductId: TextView
+    private lateinit var tvProductName: TextView
+    private lateinit var tvProductQty: TextView
+    private lateinit var tvProductDate: TextView
+    private lateinit var tvProductPrice: TextView
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
 
@@ -32,14 +32,14 @@ class CardDetailsActivity : AppCompatActivity() {
 
         btnUpdate.setOnClickListener {
             openUpdateDialog(
-                intent.getStringExtra("cardId").toString(),
-                intent.getStringExtra("cardName").toString()
+                intent.getStringExtra("productId").toString(),
+                intent.getStringExtra("productName").toString()
             )
         }
 
         btnDelete.setOnClickListener {
             deleteRecord(
-                intent.getStringExtra("cardId").toString()
+                intent.getStringExtra("productId").toString()
             )
         }
 
@@ -48,11 +48,11 @@ class CardDetailsActivity : AppCompatActivity() {
     private fun deleteRecord(
         id: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("CoconutDB").child(id)
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
-            Toast.makeText(this, "Card data deleted", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Order data deleted", Toast.LENGTH_LONG).show()
 
             val intent = Intent(this, CardFetchingActivity::class.java)
             finish()
@@ -67,11 +67,11 @@ class CardDetailsActivity : AppCompatActivity() {
 
 
     private fun initView() {
-        tvCardId = findViewById(R.id.tvCardId)
-        tvCardName = findViewById(R.id.tvCardName)
-        tvCardNumber = findViewById(R.id.tvCardNumber)
-        tvCardDate = findViewById(R.id.tvCardDate)
-        tvCardCvv = findViewById(R.id.tvCardCvv)
+        tvProductId = findViewById(R.id.tvProductId)
+        tvProductName = findViewById(R.id.tvProductName)
+        tvProductQty = findViewById(R.id.tvProductQty)
+        tvProductDate = findViewById(R.id.tvProductDate)
+        tvProductPrice = findViewById(R.id.tvProductPrice)
 
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
@@ -79,17 +79,17 @@ class CardDetailsActivity : AppCompatActivity() {
 
     private fun setValuesToViews() {
         //passing data
-        tvCardId.text = intent.getStringExtra("cardId")
-        tvCardName.text = intent.getStringExtra("cardName")
-        tvCardNumber.text = intent.getStringExtra("cardNumber")
-        tvCardDate.text = intent.getStringExtra("cardDate")
-        tvCardCvv.text = intent.getStringExtra("cardCvv")
+        tvProductId.text = intent.getStringExtra("productId")
+        tvProductName.text = intent.getStringExtra("productName")
+        tvProductQty.text = intent.getStringExtra("productQty")
+        tvProductDate.text = intent.getStringExtra("productDate")
+        tvProductPrice.text = intent.getStringExtra("productPrice")
 
     }
 
     private fun openUpdateDialog(
-        cardId: String,
-        cardName: String
+        productId: String,
+        productName: String
 
     ) {
         val mDialog = AlertDialog.Builder(this)
@@ -98,40 +98,40 @@ class CardDetailsActivity : AppCompatActivity() {
 
         mDialog.setView(mDialogView)
 
-        val etCardName = mDialogView.findViewById<EditText>(R.id.etCardName)
-        val etCardNumber = mDialogView.findViewById<EditText>(R.id.etCardNumber)
-        val etCardDate = mDialogView.findViewById<EditText>(R.id.etCardDate)
-        val etCardCvv = mDialogView.findViewById<EditText>(R.id.etCardCvv)
+        val etProductName = mDialogView.findViewById<EditText>(R.id.etProductName)
+        val etProductQty = mDialogView.findViewById<EditText>(R.id.etProductQty)
+        val etProductDate = mDialogView.findViewById<EditText>(R.id.etProductDate)
+        val etProductPrice = mDialogView.findViewById<EditText>(R.id.etProductPrice)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         //update
-        etCardName.setText(intent.getStringExtra("cardName").toString())
-        etCardNumber.setText(intent.getStringExtra("cardNumber").toString())
-        etCardDate.setText(intent.getStringExtra("cardDate").toString())
-        etCardCvv.setText(intent.getStringExtra("cardCvv").toString())
+        etProductName.setText(intent.getStringExtra("productName").toString())
+        etProductQty.setText(intent.getStringExtra("productQty").toString())
+        etProductDate.setText(intent.getStringExtra("productDate").toString())
+        etProductPrice.setText(intent.getStringExtra("productPrice").toString())
 
-        mDialog.setTitle("Updating $cardName Record")
+        mDialog.setTitle("Updating $productName Record")
 
         val alertDialog = mDialog.create()
         alertDialog.show()
 
         btnUpdateData.setOnClickListener {
             updateCardData(
-                cardId,
-                etCardName.text.toString(),
-                etCardNumber.text.toString(),
-                etCardDate.text.toString(),
-                etCardCvv.text.toString()
+                productId,
+                etProductName.text.toString(),
+                etProductQty.text.toString(),
+                etProductDate.text.toString(),
+                etProductPrice.text.toString()
             )
 
-            Toast.makeText(applicationContext, "Card Data Updated", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Order Data Updated", Toast.LENGTH_LONG).show()
 
             //we are setting updated data to our textviews
-            tvCardName.text = etCardName.text.toString()
-            tvCardNumber.text = etCardNumber.text.toString()
-            tvCardDate.text = etCardDate.text.toString()
-            tvCardCvv.text = etCardCvv.text.toString()
+            tvProductName.text = etProductName.text.toString()
+            tvProductQty.text = etProductQty.text.toString()
+            tvProductDate.text = etProductDate.text.toString()
+            tvProductPrice.text = etProductPrice.text.toString()
 
             alertDialog.dismiss()
 
@@ -146,7 +146,7 @@ class CardDetailsActivity : AppCompatActivity() {
         salary: String,
         cvv: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("PaymentDB").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("CoconutDB").child(id)
         val cardInfo = CardModel(id, name, age, salary, cvv)
         dbRef.setValue(cardInfo)
     }
