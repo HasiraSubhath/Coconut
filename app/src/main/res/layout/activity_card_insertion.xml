@@ -73,29 +73,32 @@
         android:hint="Date"
         android:backgroundTint="@color/black"
         android:inputType="date"
+        android:maxLength="5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etProductQty" />
 
     <EditText
         android:id="@+id/etProductPrice"
-        android:layout_width="103dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="173dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="245dp"
         android:backgroundTint="@color/black"
+
         android:ems="10"
         android:hint="Price"
-        android:maxLength="3"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etProductDate"
-        app:layout_constraintTop_toBottomOf="@+id/etProductQty" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etProductDate" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="93dp"
         android:layout_marginBottom="52dp"
         android:backgroundTint="@color/darkyello2"
         android:text="Add"
@@ -103,5 +106,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etProductDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>
