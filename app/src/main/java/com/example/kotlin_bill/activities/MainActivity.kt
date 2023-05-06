@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity() {
         btnFetchData = findViewById(R.id.btnFetchData)
 
         btnInsertData.setOnClickListener {
-            val intent = Intent(this, CardInsertionActivity::class.java)
+            val intent = Intent(this, OrderInsertionActivity::class.java)
             startActivity(intent)
         }
 
         btnFetchData.setOnClickListener {
-            val intent = Intent(this, CardFetchingActivity::class.java)
+            val intent = Intent(this, OrderFetchingActivity::class.java)
             startActivity(intent)
         }
 

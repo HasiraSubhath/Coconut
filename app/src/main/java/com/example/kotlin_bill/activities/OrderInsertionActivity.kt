@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.kotlin_bill.models.CardModel
+import com.example.kotlin_bill.models.OrderModel
 import com.example.kotlin_bill.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class CardInsertionActivity : AppCompatActivity() {
+class OrderInsertionActivity : AppCompatActivity() {
     //initializing variables
 
     private lateinit var etProductName: EditText
@@ -24,7 +24,7 @@ class CardInsertionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_insertion)
+        setContentView(R.layout.activity_order_insertion)
 
         etProductName = findViewById(R.id.etProductName)
         etProductQty = findViewById(R.id.etProductQty)
@@ -68,7 +68,7 @@ class CardInsertionActivity : AppCompatActivity() {
         //genrate unique ID
         val productId = dbRef.push().key!!
 
-        val card = CardModel(productId, productName, productQty, productDate, productPrice)
+        val card = OrderModel(productId, productName, productQty, productDate, productPrice)
 
         dbRef.child(productId).setValue(card)
             .addOnCompleteListener {

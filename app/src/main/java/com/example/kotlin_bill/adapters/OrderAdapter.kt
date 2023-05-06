@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_bill.R
-import com.example.kotlin_bill.models.CardModel
+import com.example.kotlin_bill.models.OrderModel
 
-class CardAdapter(private val empList: ArrayList<CardModel>) :
-    RecyclerView.Adapter<CardAdapter.ViewHolder>() {
+class OrderAdapter(private val empList: ArrayList<OrderModel>) :
+    RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -22,7 +22,7 @@ class CardAdapter(private val empList: ArrayList<CardModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.order_list_item, parent, false)
         return ViewHolder(itemView, mListener)
     }
 

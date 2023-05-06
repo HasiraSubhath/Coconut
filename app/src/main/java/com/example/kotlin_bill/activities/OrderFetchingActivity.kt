@@ -8,28 +8,28 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_bill.R
-import com.example.kotlin_bill.adapters.CardAdapter
-import com.example.kotlin_bill.models.CardModel
+import com.example.kotlin_bill.adapters.OrderAdapter
+import com.example.kotlin_bill.models.OrderModel
 import com.google.firebase.database.*
 
-class CardFetchingActivity : AppCompatActivity() {
+class OrderFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var empList: ArrayList<CardModel>
+    private lateinit var empList: ArrayList<OrderModel>
     private lateinit var dbRef: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_fetching)
+        setContentView(R.layout.activity_order_fetching)
 
         empRecyclerView = findViewById(R.id.rvEmp)
         empRecyclerView.layoutManager = LinearLayoutManager(this)
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        empList = arrayListOf<CardModel>()
+        empList = arrayListOf<OrderModel>()
 
         getCardData()
 
@@ -48,16 +48,16 @@ class CardFetchingActivity : AppCompatActivity() {
                empList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
-                        val empData = empSnap.getValue(CardModel::class.java)
+                        val empData = empSnap.getValue(OrderModel::class.java)
                         empList.add(empData!!)
                     }
-                    val mAdapter = CardAdapter(empList)
+                    val mAdapter = OrderAdapter(empList)
                     empRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : CardAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : OrderAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@CardFetchingActivity, CardDetailsActivity::class.java)
+                            val intent = Intent(this@OrderFetchingActivity, OrderDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
                             intent.putExtra("productId", empList[position].productId)

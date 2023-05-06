@@ -1,6 +1,6 @@
 package com.example.kotlin_bill.models
 
-data class CardModel(
+data class OrderModel(
     var productId: String? = null,
     var productName: String? = null,
     var productQty: String? = null,

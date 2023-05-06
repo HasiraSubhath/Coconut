@@ -9,10 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.kotlin_bill.R
-import com.example.kotlin_bill.models.CardModel
+import com.example.kotlin_bill.models.OrderModel
 import com.google.firebase.database.FirebaseDatabase
 
-class CardDetailsActivity : AppCompatActivity() {
+class OrderDetailsActivity : AppCompatActivity() {
 
     private lateinit var tvProductId: TextView
     private lateinit var tvProductName: TextView
@@ -25,7 +25,7 @@ class CardDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_card_details)
+        setContentView(R.layout.activity_order_details)
 
         initView()
         setValuesToViews()
@@ -54,7 +54,7 @@ class CardDetailsActivity : AppCompatActivity() {
         mTask.addOnSuccessListener {
             Toast.makeText(this, "Order data deleted", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, CardFetchingActivity::class.java)
+            val intent = Intent(this, OrderFetchingActivity::class.java)
             finish()
             startActivity(intent)
         }.addOnFailureListener{ error ->
@@ -94,7 +94,7 @@ class CardDetailsActivity : AppCompatActivity() {
     ) {
         val mDialog = AlertDialog.Builder(this)
         val inflater = layoutInflater
-        val mDialogView = inflater.inflate(R.layout.card_update_dialog, null)
+        val mDialogView = inflater.inflate(R.layout.order_update_dialog, null)
 
         mDialog.setView(mDialogView)
 
@@ -147,7 +147,7 @@ class CardDetailsActivity : AppCompatActivity() {
         cvv: String
     ){
         val dbRef = FirebaseDatabase.getInstance().getReference("CoconutDB").child(id)
-        val cardInfo = CardModel(id, name, age, salary, cvv)
+        val cardInfo = OrderModel(id, name, age, salary, cvv)
         dbRef.setValue(cardInfo)
     }
 }
