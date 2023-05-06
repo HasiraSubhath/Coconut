@@ -51,16 +51,16 @@ class CardInsertionActivity : AppCompatActivity() {
         //validation
         if(productName.isEmpty() || productQty.isEmpty() || productDate.isEmpty() || productPrice.isEmpty()){
         if (productName.isEmpty()) {
-            etProductName.error = "Please enter card Name"
+            etProductName.error = "Please enter Product Name"
         }
         if (productQty.isEmpty()) {
-            etProductQty.error = "Please enter card Number"
+            etProductQty.error = "Please enter quantity"
         }
         if (productDate.isEmpty()) {
-            etProductDate.error = "Please enter card Date"
+            etProductDate.error = "Please enter  Date"
         }
         if (productPrice.isEmpty()) {
-            etProductDate.error = "Please enter cvv"
+            etProductPrice.error = "Please enter price"
         }
             Toast.makeText(this, "Some areas are not filled", Toast.LENGTH_LONG).show()
         }
